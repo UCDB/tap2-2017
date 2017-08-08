@@ -2,6 +2,7 @@ package br.ucdb;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -14,46 +15,48 @@ import java.util.List;
 public class UsuarioController {
 
     @Autowired
-    private UsuarioRepository usuarioRepository;
+    private UsuarioService usuarioService;
+
 
     @PostMapping("/usuarios")
-    public Usuario cadastrar(@RequestBody Usuario usuario) {
-        return salvar(usuario);
+    public Usuario cadastrar(@RequestBody Usuario usuario) throws ServiceException {
+        try {
+            return usuarioService.salvar(usuario);
+        }catch (ServiceException e){
+            throw  e;
+        }
     }
 
     @PutMapping("/usuarios")
-    public Usuario alterar(@RequestBody Usuario usuario) {
-        return salvar(usuario);
+    public Usuario alterar(@RequestBody Usuario usuario) throws ServiceException {
+        return usuarioService.salvar(usuario);
     }
 
 
-    private Usuario salvar(Usuario usuario) {
-       return usuarioRepository.save(usuario);
-    }
 
     @GetMapping("/usuarios/todos")
     public List<Usuario> buscarTodos(){
-        return usuarioRepository.findAll();
+        return usuarioService.buscarTodos();
     }
 
     @GetMapping("/usuarios/nome")
     public List<Usuario> buscarPorNome(@RequestParam("nome") String nome){
-        return usuarioRepository.findByNomeIgnoreCase(nome);
+        return usuarioService.buscarPorNome(nome);
     }
 
     @GetMapping("/usuarios/email")
     public List<Usuario> buscarPorEmail(@RequestParam("email") String email){
-        return usuarioRepository.findByEmail(email);
+        return usuarioService.buscarPorEmail(email);
     }
 
     @GetMapping("/usuarios/nomeemail")
     public List<Usuario> buscarPorEmail(@RequestParam("nome") String nome, @RequestParam("email") String email){
-        return usuarioRepository.findByNomeOrEmailAllIgnoreCase(nome, email);
+        return usuarioService.buscarPorNomeOuEmail(nome, email);
     }
 
     @DeleteMapping("/usuarios")
     public void excluir (@RequestBody Usuario usuario){
-         usuarioRepository.delete(usuario);
+        usuarioService.excluir(usuario);
     }
 
 
