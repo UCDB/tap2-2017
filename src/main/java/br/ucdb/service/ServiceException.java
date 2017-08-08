@@ -1,4 +1,4 @@
-package br.ucdb;
+package br.ucdb.service;
 
 /**
  * Created by Virmerson on 07/08/2017.

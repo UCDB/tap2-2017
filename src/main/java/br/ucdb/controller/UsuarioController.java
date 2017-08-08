@@ -1,8 +1,10 @@
-package br.ucdb;
+package br.ucdb.controller;
 
 
+import br.ucdb.service.ServiceException;
+import br.ucdb.model.Usuario;
+import br.ucdb.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

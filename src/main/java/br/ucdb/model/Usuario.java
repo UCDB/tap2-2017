@@ -1,4 +1,4 @@
-package br.ucdb;
+package br.ucdb.model;
 
 import lombok.Data;
 

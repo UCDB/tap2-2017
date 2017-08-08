@@ -1,5 +1,6 @@
-package br.ucdb;
+package br.ucdb.repository;
 
+import br.ucdb.model.Usuario;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

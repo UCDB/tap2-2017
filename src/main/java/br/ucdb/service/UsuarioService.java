@@ -1,12 +1,14 @@
-package br.ucdb;
+package br.ucdb.service;
 
+import br.ucdb.model.Usuario;
+import br.ucdb.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 /**
- * Created by rf3020 on 07/08/2017.
+ * Created by Virmerson on 07/08/2017.
  */
 @Service
 public class UsuarioService {
