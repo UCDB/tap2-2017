@@ -13,11 +13,13 @@ import java.util.List;
  * Created by Virmerson Bento dos Santos on 7/24/17.
  */
 
+@CrossOrigin(origins = "*")
 @RestController
 public class UsuarioController {
 
     @Autowired
     private UsuarioService usuarioService;
+
 
 
     @PostMapping("/usuarios")

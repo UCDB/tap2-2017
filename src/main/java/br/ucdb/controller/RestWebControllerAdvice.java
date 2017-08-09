@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 /**
  * Created by Virmerson on 07/08/2017.
+ * Fonte: http://javasampleapproach.com/spring-framework/spring-mvc/use-restcontrolleradvice-new-features-spring-framework-4-3
  */
 @RestControllerAdvice
 public class RestWebControllerAdvice {
