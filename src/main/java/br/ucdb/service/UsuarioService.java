@@ -1,5 +1,6 @@
 package br.ucdb.service;
 
+import br.ucdb.model.Perfil;
 import br.ucdb.model.Usuario;
 import br.ucdb.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +18,13 @@ public class UsuarioService {
     @Autowired
     private UsuarioRepository usuarioRepository;
 
+    @Autowired
+    private PerfilRepository perfilRepository;
+
     public Usuario salvar(Usuario usuario) throws ServiceException {
+
+        Perfil perfil = perfilRepository.findOne(usuario.getPerfil().getId());
+        usuario.setPerfil(perfil);
 
         List<Usuario> usuarioList=  usuarioRepository.findByNome(usuario.getNome());
         if (usuarioList!=null && usuarioList.size()>0){

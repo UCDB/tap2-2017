@@ -1,6 +1,7 @@
 package br.ucdb.controller;
 
 
+import br.ucdb.model.Perfil;
 import br.ucdb.service.ServiceException;
 import br.ucdb.model.Usuario;
 import br.ucdb.service.UsuarioService;
@@ -24,6 +25,7 @@ public class UsuarioController {
 
     @PostMapping("/usuarios")
     public Usuario cadastrar(@RequestBody Usuario usuario) throws ServiceException {
+
         try {
             return usuarioService.salvar(usuario);
         }catch (ServiceException e){
