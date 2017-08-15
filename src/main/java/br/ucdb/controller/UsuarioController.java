@@ -45,6 +45,11 @@ public class UsuarioController {
         return usuarioService.buscarTodos();
     }
 
+    @GetMapping("/usuarios/perfil/{id}")
+    public List<Usuario> buscarTodos(@PathVariable("id") Integer  perfilId){
+        return usuarioService.buscarTodosPorPerfilId(perfilId);
+    }
+
     @GetMapping("/usuarios/nome")
     public List<Usuario> buscarPorNome(@RequestParam("nome") String nome){
         return usuarioService.buscarPorNome(nome);

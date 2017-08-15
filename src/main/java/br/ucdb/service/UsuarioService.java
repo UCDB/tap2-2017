@@ -53,4 +53,8 @@ public class UsuarioService {
     public List<Usuario> buscarTodos() {
         return usuarioRepository.findAll();
     }
+
+    public List<Usuario> buscarTodosPorPerfilId(Integer perfilId) {
+       return  usuarioRepository.findByPerfilId(perfilId);
+    }
 }
