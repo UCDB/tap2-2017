@@ -25,7 +25,7 @@ public class Usuario {
     @JsonIgnore
     private String senha;
 
-    @JsonIgnore
+   // @JsonIgnore
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn
     private Perfil perfil;

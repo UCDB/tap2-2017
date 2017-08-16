@@ -2,6 +2,7 @@ package br.ucdb.service;
 
 import br.ucdb.model.Perfil;
 import br.ucdb.model.Usuario;
+import br.ucdb.repository.PerfilRepository;
 import br.ucdb.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,13 +24,29 @@ public class UsuarioService {
 
     public Usuario salvar(Usuario usuario) throws ServiceException {
 
+
+        String nomeRegistrado="";
+        String nomeNovo =  usuario.getNome();
+
+        if (usuario.getId()!=null) {
+            Usuario usuRegistrado = usuarioRepository.findOne(usuario.getId());
+             nomeRegistrado = usuRegistrado.getNome();
+
+        }
+
+        if (!nomeRegistrado.equals(nomeNovo)){
+
+            List<Usuario> usuarioList = usuarioRepository.findByNome(usuario.getNome());
+            if (usuarioList != null && usuarioList.size() > 0) {
+                throw new ServiceException("Usuario Já Existente");
+            }
+
+        }
+
+
         Perfil perfil = perfilRepository.findOne(usuario.getPerfil().getId());
         usuario.setPerfil(perfil);
 
-        List<Usuario> usuarioList=  usuarioRepository.findByNome(usuario.getNome());
-        if (usuarioList!=null && usuarioList.size()>0){
-            throw new ServiceException("Usuario Já Existente");
-        }
         return usuarioRepository.save(usuario);
     }
 

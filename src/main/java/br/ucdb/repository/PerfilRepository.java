@@ -1,4 +1,4 @@
-package br.ucdb.service;
+package br.ucdb.repository;
 
 import br.ucdb.model.Perfil;
 import br.ucdb.model.Usuario;

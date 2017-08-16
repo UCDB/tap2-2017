@@ -1,7 +1,9 @@
 package br.ucdb.controller;
 
 import br.ucdb.service.ServiceException;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 /**
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @RestControllerAdvice
 public class RestWebControllerAdvice {
 
+    @ResponseStatus(value= HttpStatus.FORBIDDEN)
     @ExceptionHandler(ServiceException.class)
     public ResponseMsg handleServiceException(ServiceException e){
         ResponseMsg msg = new ResponseMsg();

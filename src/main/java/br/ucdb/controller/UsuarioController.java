@@ -65,8 +65,11 @@ public class UsuarioController {
         return usuarioService.buscarPorNomeOuEmail(nome, email);
     }
 
-    @DeleteMapping("/usuarios")
-    public void excluir (@RequestBody Usuario usuario){
+    @DeleteMapping("/usuarios/{id}")
+    public void excluir (@PathVariable("id") Integer id){
+
+        Usuario usuario = new Usuario();
+        usuario.setId(id);
         usuarioService.excluir(usuario);
     }
 
